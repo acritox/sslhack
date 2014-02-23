@@ -144,3 +144,28 @@ Example:
     </BODY></HTML>
 
 
+replace_apk_bks_cert.bash
+-------------------------
+
+script to replace certificate in BKS keystore inside of an APK
+(e.g. for changing pinned SSL certificates) and re-sign the modified APK
+
+Dependencies:
+* apt-get install libbcprov-java
+
+Usage:
+
+    replace_apk_bks_cert.bash [--list|--info|--replace|--sign|--help] <file.apk> ...
+    
+    -l|--list <file.apk>
+        search BKS keystores and list their aliases
+    
+    -i|--info <file.apk> <path> <alias>
+        show certificate details of certificate in BKS keystore
+    
+    -r|--repl <file.apk> <path> <alias> <fake.crt> [<keystore-password> [<fakecrt.apk>]]
+        replace certificate in BKS keystore with fake.crt
+    
+    -s|--sign <file.apk> [<file.crt> <file.pk8> [<signed.apk>]]
+        sign (modified) APK with private key
+
